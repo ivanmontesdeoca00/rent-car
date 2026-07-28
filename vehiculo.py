@@ -87,3 +87,23 @@ class Auto(Vehiculo):
             return total, print(f"Subtotal: $ {precio_base:.2f} -- Descuento de 10% por reservar mas de 7 dias: -${descuento:.2f}")
         return precio_base, print(f"Subtotal: ${precio_base:.2f} -- Sin descuento aplicable")
 
+class Camioneta(Vehiculo):
+    ##Mismo que clase auto, diccionario que pide
+    modelos_catalogo = {"Ford Raptor":{
+        "marca": "Ford", "precio_diario": 90.0, "capacidad_personas": 5,
+        "tipo_traccion": "4x4", "rendimiento_km": 10.5, "tipo_motor": "V8 Turbo"
+    },
+    "Hummer H3":{
+        "marca": "Hummer", "precio_diario": 100.0, "capacidad_personas": 5,
+        "tipo_traccion": "4x4", "rendimiento_km": 11, "tipo_motor": "V8 Militar a prueba de balas"
+    
+    }
+    }
+
+    def calcular_cotizacion(self, dias, **asd):
+        seguro_4x4_diario = 20.0
+        tarifa_total = (self.get_precio_diario() + seguro_4x4_diario) * dias
+        detalle = print(f"Tarifa base ${self.get_precio_diario():.2f} + Seguro 4x4 ${seguro_4x4_diario}/dia x {dias} dias")
+        return tarifa_total, detalle
+
+
