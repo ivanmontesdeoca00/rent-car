@@ -53,8 +53,8 @@ class Vehiculo:
         print("=" * 50)
     
 
-    def calcular_cotizacion(self, dias, **asd):
-        raise NotImplementedError ("Este metodo tiene que ser implementado por las clases hijas")
+    def calcular_cotizacion(self, dias, **asd): ## el **asd cumple la funcion de agregado, por ejemplo si quiero agregar pasajeros y demas
+        raise NotImplementedError ("Este metodo tiene que ser implementado por las clases hijas") ## Esto aca significa que no hay una formula general, la clase hija tiene la obligacion de escribir su calculo
 
 
 class Auto(Vehiculo): 
