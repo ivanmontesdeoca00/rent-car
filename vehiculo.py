@@ -1,5 +1,5 @@
 class Vehiculo:
-    def __init__(self, marca, modelo, precio_diario, capacidad_personas, tipo_traccion, terreno_ideal, rendimiento_km, tipo_motor)
+    def __init__(self, marca, modelo, precio_diario, capacidad_personas, tipo_traccion, terreno_ideal, rendimiento_km, tipo_motor):
         self.marca = marca
         self.modelo = modelo
         self.precio_diario = precio_diario
@@ -15,7 +15,7 @@ class Vehiculo:
     def get_precio_diario(self):
         return self.__precio_diario
     
-    def set_precio_diario(self, precio)
+    def set_precio_diario(self, precio):
         if precio <= 0:
             print ("Precio no puede ser menor a 0. Asignado tarifa base por defecto de $500 pesos.")
             self.__precio_diario = 500
@@ -109,12 +109,11 @@ class Camioneta(Vehiculo):
 
 class Camion(Vehiculo):
     modelos_catalogo = {
-        "FH VOLVO"{
-            "marca": "Volvo", "precio_diario": 150.0, "capacidad_personas": 3,
+        "FH VOLVO": { "marca": "Volvo", "precio_diario": 150.0, "capacidad_personas": 3,
             "tipo_traccion": "6x4", "rendimiento_km": 5.5, "tipo_motor": "6.7L Turbo"
-
-        },
-        "Mercedes Benz Actros"{
+            },
+        
+        "Mercedes Benz Actros": {
             "marca": "Mercedes Benz", "precio_diario": 140.0, "capacidad_personas": 3,
             "tipo_traccion": "4x2", "rendimiento_km": 6.0, "tipo_motor": "7.7 L 1100HP "
         }
@@ -138,11 +137,11 @@ class Camion(Vehiculo):
 
 class Transporte(Vehiculo):
     modelos_catalogo = {
-        "Mercedes Benz Sprinter": {
+        "Mercedes Benz Sprinter" : {
             "marca": "Mercedes Benz", "precio_diario": 190.0, "capacidad_personas": 16,
             "tipo_traccion": "4x2", "rendimiento_km": 9.0, "tipo_motor": "2.0L CDI"
 
-        }
+        },
         "Hyundai H1 BUS": {
             "marca": "Hyundai", "precio_diario": 185.0, "capacidad_personas": 19,
             "tipo_traccion": "4x3", "rendimiento_km": 11.0
@@ -157,7 +156,7 @@ class Transporte(Vehiculo):
         super().__init__(m["marca"], modelo, m["precio_diario"], m["capacidad_personas"], m["tipo_traccion"], "Traslado de gente", m["rendimiento_km"], m["tipo_motor"])
 
     
-    def calcular_cotizacion(self,dias, cantidad_pasajeros= 1, **asd)
+    def calcular_cotizacion(self,dias, cantidad_pasajeros= 1, **asd):
         tarifa_total = (self.get_precio_diario() * dias) + cantidad_pasajeros
         detalle = print(f"Alquiler base {dias} dias: $ {self.get_precio_diario() * dias:.2f} + Tasa por la cantidad de pasajeros: $ {cantidad_pasajeros}")
         return tarifa_total, detalle

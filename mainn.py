@@ -1,4 +1,4 @@
-import vehiculo 
+from vehiculo import *
 
 def menu_interactivo():
     print("=" *60)
@@ -13,9 +13,9 @@ def menu_interactivo():
             if pasajeros <= 0:
                 print("Elegi un numero valido mayor a 0")
                 continue
-            except ValueError:
-                print ("Entrada invalida, ingresa numeros.")
-                continue
+        except ValueError:
+            print ("Entrada invalida, ingresa numeros.")
+            continue
 
         print(" Que tipo de Terreno va a transitar?")
         print("1) Ciudad (Auto-Suv)")
@@ -43,9 +43,9 @@ def menu_interactivo():
             if dias <= 0:
                 print("El numero debe ser mayor a 0")
                 continue
-            except ValueError:
-                print("Entrada invalida, ingrese un numero")
-                continue
+        except ValueError:
+            print("Entrada invalida, ingrese un numero")
+            continue
 
 
             print("--- PASO 2: Evaluacion de capacidad de gente ---")
@@ -102,5 +102,5 @@ def menu_interactivo():
 
 
 
-if __name__ == "__menu_interactivo__":
+if __name__ == "__main__":
     menu_interactivo()
