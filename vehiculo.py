@@ -2,7 +2,7 @@ class Vehiculo:
     def __init__(self, marca, modelo, precio_diario, capacidad_personas, tipo_traccion, terreno_ideal, rendimiento_km, tipo_motor):
         self.marca = marca
         self.modelo = modelo
-        self.precio_diario = precio_diario
+        self.set_precio_diario(precio_diario)
         self.capacidad_personas = capacidad_personas
         self.tipo_traccion = tipo_traccion
         self.terreno_ideal = terreno_ideal
@@ -59,7 +59,7 @@ class Vehiculo:
 
 class Auto(Vehiculo): 
     ## Aca es donde hago los dos diccionarios que pide en la tarea
-    modelo_catalogo = {
+    modelos_catalogo = {
         "Hyundai Accent": {
             "marca": "Hyundai", "precio_diario": 60.0, "capacidad_personas": 5,
             "tipo_traccion": "Tiene 4 ruedas con wea", "rendimiento_km": 10.5, "tipo_motor": "1.6 Basico"
@@ -72,7 +72,7 @@ class Auto(Vehiculo):
 
         ##Aca no sabia como hacer un def init para elegir la opcion de que elija que vehiculo dentro de la flota quiere, asi que lo hice de esta manera
         ## Inicia como defecto el accent.
-    def __init__(self, modelo="Hyndai Accent"):
+    def __init__(self, modelo="Hyundai Accent"):
         if modelo not in self.modelos_catalogo:
             modelo = list(self.modelos_catalogo.keys())[0]
 
@@ -84,8 +84,10 @@ class Auto(Vehiculo):
         if dias > 7:
             descuento = precio_base * 0.10
             total = precio_base - descuento
-            return total, print(f"Subtotal: $ {precio_base:.2f} -- Descuento de 10% por reservar mas de 7 dias: -${descuento:.2f}")
-        return precio_base, print(f"Subtotal: ${precio_base:.2f} -- Sin descuento aplicable")
+            print(f"Subtotal: $ {precio_base:.2f} -- Descuento de 10% por reservar mas de 7 dias: -${descuento:.2f}")
+            return total
+        print(f"Subtotal: ${precio_base:.2f} -- Sin descuento aplicable")
+        return precio_base
 
 class Camioneta(Vehiculo):
     ##Mismo que clase auto, diccionario que pide
@@ -123,7 +125,7 @@ class Camion(Vehiculo):
         if modelo not in self.modelos_catalogo:
             modelo = list(self.modelos_catalogo.keys())[0]
         
-        m = self.modelos_catalogo[modelos]
+        m = self.modelos_catalogo[modelo]
 
         super().__init__(m["marca"], modelo, m["precio_diario"], m["capacidad_personas"], m["tipo_traccion"], "Trabajo pesado", m["rendimiento_km"], m["tipo_motor"])
 
@@ -144,7 +146,7 @@ class Transporte(Vehiculo):
         },
         "Hyundai H1 BUS": {
             "marca": "Hyundai", "precio_diario": 185.0, "capacidad_personas": 19,
-            "tipo_traccion": "4x3", "rendimiento_km": 11.0
+            "tipo_traccion": "4x3", "rendimiento_km": 11.0, "tipo_motor": "2.7L TURBO"
         }
     }
 
