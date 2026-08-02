@@ -1,4 +1,8 @@
-from vehiculo import *
+from Vehiculo import Vehiculo
+from Vauto_suv import Auto
+from Vcamioneta import Camioneta
+from Vcamion import Camion
+from Vtransporte import Transporte
 
 def menu_interactivo():
     print("=" *60)
@@ -48,13 +52,13 @@ def menu_interactivo():
             continue
 
 
-            print("--- PASO 2: Evaluacion de capacidad de gente ---")
-            if pasajeros > vehiculo.get_capacidad_personas():
+        print("--- PASO 2: Evaluacion de capacidad de gente ---")
+        if pasajeros > vehiculo.capacidad_personas:
                 print (f"El vehiculo elegido {vehiculo.marca} {vehiculo.modelo} esta en su capacidad maxima de pasajeros.")
                 print ("El vehiculo elegido no tiene capacidad suficiente para tus acompañantes")
 
                 vehiculo_sugerido = Transporte("Mercedes Benz Sprinter")
-                print(f"Vehiculo alternativo sugerido: {vehiculo_sugerido.marca} {vehiculo_sugerido.modelo} Capacidad: {vehiculo_sugerido.get_capacidad_personas()} de pasajeros")
+                print(f"Vehiculo alternativo sugerido: {vehiculo_sugerido.marca} {vehiculo_sugerido.modelo} Capacidad: {vehiculo_sugerido.capacidad_personas} de pasajeros")
 
 
                 respuesta = input("Desea cotizar  la opcion mas amplia? SI-NO : ").strip().lower()
@@ -69,33 +73,34 @@ def menu_interactivo():
                         print("Gracias por usar el sistema, nos vemos")
                         break
                     continue
-            else:
+        else:
                 print("Verificacion exitosa, el vehiculo cumple con las condiciones.")
 
 
-            print("--- PASO 3: Ficha tecnica y cotizacion ----")
+        print("--- PASO 3: Ficha tecnica y cotizacion ----")
 
-            vehiculo.mostrar_ficha_tecnica()
+        vehiculo.mostrar_ficha_tecnica()
 
-            total, detalle = vehiculo.calcular_cotizacion(dias, cantidad_pasajeros=pasajeros)
+        total, detalle = vehiculo.calcular_cotizacion(dias, cantidad_pasajeros=pasajeros)
 
-            print("=" *50)
+        print("=" *50)
 
-            print(" COTIZACION FINAL: DESGLOSE")
-            print("=" * 50)
-            print(f"Dias de alquiler : {dias}")
+        print(" COTIZACION FINAL: DESGLOSE")
+        
+        print("=" * 50)
+        print(f"Dias de alquiler : {dias}")
 
             ##Esto es una funcion de py que sirve para verificar si el objeto almacenado en la variable hija pertenece a su clase padre
-            if isinstance(vehiculo, Transporte):
+        if isinstance(vehiculo, Transporte):
                 print(f"Pasajeros base: {pasajeros}")    
             
-            print (f"Detalle del calculo: {detalle}")
-            print(f"TOTAL A PAGAR: $ {total:.2f}") ##EL 2F Significa que aca va a haber un resultado con 2 decimales y los tiene que tener en consideracion para que no se rompa el calculo
-            print("=" *50)
+        print (f"Detalle del calculo: {detalle}")
+        print(f"TOTAL A PAGAR: $ {total:.2f}") ##EL 2F Significa que aca va a haber un resultado con 2 decimales y los tiene que tener en consideracion para que no se rompa el calculo
+        print("=" *50)
 
 
-            otra_opcion = input("Desea hacer otra cotizacion? SI-NO: ").strip().lower()
-            if otra_opcion not in ["si", "sí", "s", "yes", "y"]:
+        otra_opcion = input("Desea hacer otra cotizacion? SI-NO: ").strip().lower()
+        if otra_opcion not in ["si", "sí", "s", "yes", "y"]:
                 print("gracias por preferir nuestra empresa, buen viaje")
                 break
 
